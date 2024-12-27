@@ -1,0 +1,72 @@
+networks:
+  mariadb-network:
+    driver: bridge
+
+services:
+  master-db:
+    image: mariadb:latest
+    container_name: master-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    command:
+      - --server-id=1
+      - --log-bin=mysql-bin
+    networks:
+      - mariadb-network
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./master-init:/docker-entrypoint-initdb.d
+
+  slave-db:
+    image: mariadb:latest
+    container_name: slave-db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    command:
+      - --server-id=2
+      - --relay-log=mysql-relay
+      - --read-only=1
+    networks:
+      - mariadb-network
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./slave-init:/docker-entrypoint-initdb.d
+
+  proxysql:
+    image: proxysql/proxysql:latest
+    container_name: proxysql
+    environment:
+      PROXYSQL_DATADIR: /data
+    volumes:
+      - ./proxysql.cnf:/etc/proxysql.cnf
+    networks:
+      - mariadb-network
+    ports:
+      - "6033:6033"
+      - "6032:6032"
+      - "6070:6070"
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    networks:
+      - mariadb-network
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - mariadb-network
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+volumes:
+  grafana-storage:

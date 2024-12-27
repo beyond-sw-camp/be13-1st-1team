@@ -1,0 +1,37 @@
+datadir="/data"
+admin_variables=
+{
+    admin_credentials="admin:admin"  # ProxySQL 관리 인터페이스 로그인 정보
+    mysql_ifaces="0.0.0.0:6032"      # 관리 포트
+    restapi_enabled=true             # REST API 활성화 (Prometheus 메트릭용)
+    restapi_port=6070                # Prometheus 메트릭 포트
+    prometheus_memory_metrics_interval=60  # 메모리 메트릭 수집 간격 (초)
+}
+mysql_variables=
+{
+    threads=4
+    max_connections=2048
+    default_query_delay=0
+    default_query_timeout=36000000
+    poll_timeout=2000
+    interfaces="0.0.0.0:6033"        # SQL 포트
+    default_schema="information_schema"
+    stacksize=1048576
+    server_version="5.7"
+}
+mysql_servers =
+(
+    { address="master-db", port=3306, hostgroup=1, max_connections=1000, weight=1 }, # Master
+    { address="slave-db", port=3306, hostgroup=2, max_connections=1000, weight=1 }  # Slave
+)
+mysql_users =
+(
+    { username = "root", password = "1q2w3e4r!", default_hostgroup = 1, max_connections=1000 }
+)
+mysql_query_rules =
+(
+    { rule_id=1, active=1, match_digest="^SELECT .*", destination_hostgroup=2, apply=1 }, # 읽기 요청 → Slave
+    { rule_id=2, active=1, match_digest=".*", destination_hostgroup=1, apply=1 }          # 쓰기 요청 → Master
+)
+
+
