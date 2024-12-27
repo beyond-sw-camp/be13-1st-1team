@@ -3,7 +3,7 @@
 
 
 # 🫡팀원소개
-### 🧑‍💻김범석  
+### 🧑‍💻김범석 [ @G00dbyul ](https://github.com/g00dbyul)
 ### 🧑‍💻송현준 [ @Hyeonjunnn ](https://github.com/Hyeonjunnn)
 ### 👩‍💻이제경 [ @jelee55 ](https://github.com/jelee55)  
 ### 🧑‍💻이창신
