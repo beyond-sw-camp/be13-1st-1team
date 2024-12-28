@@ -6,7 +6,7 @@
 ### 🧑‍💻김범석 [ @g00dbyul ](https://github.com/g00dbyul)
 ### 🧑‍💻송현준 [ @Hyeonjunnn ](https://github.com/Hyeonjunnn)
 ### 👩‍💻이제경 [ @jelee55 ](https://github.com/jelee55)  
-### 🧑‍💻이창신
+### 🧑‍💻이창신 [ @always0702 ](https://github.com/always0702)
 
 # 프로젝트 소개
 
