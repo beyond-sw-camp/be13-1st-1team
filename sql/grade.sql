@@ -86,7 +86,7 @@ BEGIN
            B.`name` AS '등급명'
     FROM user A
     LEFT OUTER JOIN grade B
-                 ON A.grade_id = B.id
+                 ON A.gradeId = B.id
     WHERE userId = _userId
     ;
 
@@ -96,11 +96,11 @@ DELIMITER ;
 
 -- U
 -- 관리자에 의한 회원 등급 수정 처리
--- CALL updateOneUser_grade_idByUserId(userId, grade_id);
+-- CALL updateOneUser_gradeIdByUserId(userId, gradeId);
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE updateOneUser_grade_idByUserId(
+CREATE OR REPLACE PROCEDURE updateOneUser_gradeIdByUserId(
     IN _userId VARCHAR(15),
-       _grade_id INT
+       _gradeId INT
     )
 BEGIN
 
@@ -111,7 +111,7 @@ BEGIN
     )ELSE(
         UPDATE user
         SET ( 
-            grade_id = _grade_id
+            gradeId = _gradeId
         )
         WHERE userId = _userId
         ;
