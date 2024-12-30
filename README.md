@@ -1,12 +1,18 @@
 # Kppong
 
-
+<br/>
+<br/>
+<br/>
 
 # 🫡팀원소개
 ### 🧑‍💻김범석 [ @g00dbyul ](https://github.com/g00dbyul)
 ### 🧑‍💻송현준 [ @Hyeonjunnn ](https://github.com/Hyeonjunnn)
 ### 👩‍💻이제경 [ @jelee55 ](https://github.com/jelee55)  
 ### 🧑‍💻이창신 [ @always0702 ](https://github.com/always0702)
+
+<br/>
+<br/>
+<br/>
 
 
 # 📣프로젝트 소개
@@ -27,9 +33,16 @@
 
 * 플랫폼 내에 게시판이 존재하여 사용자가 자유롭게 게시물을 작성할 수 있으며 댓글을 통해 서로 소통하며 정보 공유나 후기 등을 공유할 수 있도록 합니다.
 
+<br/>
+<br/>
+<br/>
 
 # 기술스택
 
+
+<br/>
+<br/>
+<br/>
 
 # 요구사항 명세서
 <details>
@@ -37,15 +50,23 @@
 <div markdown="1">
 
 
-![요구사항 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897410318438/page-0001.jpg?ex=67737d63&is=67722be3&hm=fa7aca5c263e2445a399c2f7d3f3de0af0afb0d212f173977e720fe56d9f9481&)
-![요구사항 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897813237760/page-0002.jpg?ex=67737d63&is=67722be3&hm=8245fd28a3c5f9c3a6a0918fba954da714bbfc67a366c85c937669aaa8b7b452&)
+![요구사항 명세서](https://cdn.discordapp.com/attachments/1323349820890419314/1323350855365427360/--0.jpg?ex=67743206&is=6772e086&hm=aa7a0bb3d612d344c07294709427a2b00f6f9b4d8b96268f9978e54ee30b839f&)
+![요구사항 명세서2](https://cdn.discordapp.com/attachments/1323349820890419314/1323350855830736906/--1.jpg?ex=67743206&is=6772e086&hm=64c66b5f7d407dbd770e94eb76aeed4cfb9c2c2dfb3ac3ba99cd9ffebaa10142&)
 
 
 </div>
 </details>
 
+<br/>
+<br/>
+<br/>
+
 # ERD 다이어그램
-![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323222325222445116/kppong.png?ex=6773ba52&is=677268d2&hm=6c0d11fd7f2948d912ac70044c87c6fdb1605b2dec97bcb088d9c1549a06607d&)
+![erdCloud](https://cdn.discordapp.com/attachments/1323349820890419314/1323350575181598740/kppong.png?ex=677431c3&is=6772e043&hm=b0eddd83cac1a273940bff1b153c8160b8dd7ad36b34415265c76591101f9b3a&)
+
+<br/>
+<br/>
+<br/>
 
 # 테이블 명세서
 
@@ -53,34 +74,46 @@
 <summary> <b> 테이블 명세서 </b> </summary>
 <div markdown="1">
 
-![테이블 명세서 1](https://cdn.discordapp.com/attachments/1318411133933060198/1323157096627437568/page-0001.jpg?ex=67737d92&is=67722c12&hm=f6559fca55a1ac20f226f4c340d0c13d1e77aa2e1113fc016b59c33d67a07130&)
-![테이블 명세서 2](https://cdn.discordapp.com/attachments/1318411133933060198/1323157096983822459/page-0002.jpg?ex=67737d92&is=67722c12&hm=bf49339cf99a4724139b0271587f6d223c0e241978b1c860300e9cf1c5958fa6&)
-![테이블 명세서 3](https://cdn.discordapp.com/attachments/1318411133933060198/1323157731078832150/3.jpg?ex=67737e2a&is=67722caa&hm=b5fe6b5da0afb735713aa9a7337b146e5a494580c52d1b33a9d075085cbd740b&)
+![테이블 명세서 1](https://cdn.discordapp.com/attachments/1323349820890419314/1323351149088346253/page-0001.jpg?ex=6774324c&is=6772e0cc&hm=85da5b700383b06c6f9864e2412af6f520891deac4a35347a110739b6b4b8810&)
+![테이블 명세서 2](https://cdn.discordapp.com/attachments/1323349820890419314/1323351149625212928/page-0002.jpg?ex=6774324c&is=6772e0cc&hm=83ab84783c813b837044b346e34ed9f18cce717a0514132045e60f578c38e8fc&)
+![테이블 명세서 3](https://cdn.discordapp.com/attachments/1323349820890419314/1323351148794478602/page-0003.jpg?ex=6774324c&is=6772e0cc&hm=4ee9c140f6ffca2755f0f771ccf7b21c73280c378cc147e50243a7aaf50f6c72&)
 
 
 </div>
 </details>
 
+<br/>
+<br/>
+<br/>
 
 # 테스트 명세서
 <details>
 <summary> <b> 테스트 명세서 </b> </summary>
 <div markdown="1">
 
-![테스트 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323225912157671424/--0.jpg?ex=6773bda9&is=67726c29&hm=58eb817a2f1dcc364ff20c159bc50b0f809b73afd2a579f44438e61abb71fd35&)
-![테스트 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323225912656924712/--1.jpg?ex=6773bda9&is=67726c29&hm=043014a5b7b4be3ba1f06f13303250f5aebfa07a82c40d389d27a34172bcddc6&)
+![테스트 명세서](https://cdn.discordapp.com/attachments/1323349820890419314/1323351683119579308/--0.jpg?ex=677432cb&is=6772e14b&hm=b3d441dc44275a67b76f0448d41edccfc082bbb861373e0087c1e5d386b95f7c&)
+![테스트 명세서2](https://cdn.discordapp.com/attachments/1323349820890419314/1323351682423455774/--1.jpg?ex=677432cb&is=6772e14b&hm=4026f6c8844cf4b6dfb61663539502da15fde14f68b379ad23c533173c40e37e&)
 
 
 </div>
 </details>
+
+<br/>
+<br/>
+<br/>
 
 # 프로시저 명세서
 
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary> <b> 프로시저 명세서 </b> </summary>
 <div markdown="1">
 
-프로시저 명세서
+![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138528587886/page-0001.jpg?ex=67743338&is=6772e1b8&hm=15cc04669d20fd5c7737d7795f4be512caff3e3923d304cddadb4751a467e34c&)
+![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138209951856/page-0003.jpg?ex=67743338&is=6772e1b8&hm=8cf09b814c8873039179d93a676e46b9d4aa2fc1dde1afe78278c3c744e89787&)
 
 </div>
 </details>
+
+<br/>
+<br/>
+<br/>
