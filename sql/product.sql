@@ -184,21 +184,3 @@ BEGIN
     values(myId, otherId, reportReason)
 END$$
 DELIMITER ;
-
-
--- 별도의 속성 없이 startDate, endDate, deadlineDate로 상품의 상태를 결정하므로,
--- 현재 상태에선 불가능함
-
-
--- 판매자가  확정된 상품에 대해 조기마감 처리를 할 수 있다.
-
--- 시스템에 의해 상품이 확정 처리 될 수 있다.
-
-
--- 시스템에 의해 상품이 만료 처리 될 수 있다.
-
-
-
-
-
-
