@@ -32,7 +32,7 @@
 
 
 # 요구사항 명세서
-![요구사항 명세서]([https://drive.google.com/drive/recent](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897410318438/page-0001.jpg?ex=67737d63&is=67722be3&hm=fa7aca5c263e2445a399c2f7d3f3de0af0afb0d212f173977e720fe56d9f9481&))
+![요구사항 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897410318438/page-0001.jpg?ex=67737d63&is=67722be3&hm=fa7aca5c263e2445a399c2f7d3f3de0af0afb0d212f173977e720fe56d9f9481&)
 ![요구사항 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897813237760/page-0002.jpg?ex=67737d63&is=67722be3&hm=8245fd28a3c5f9c3a6a0918fba954da714bbfc67a366c85c937669aaa8b7b452&)
 
 # ERD 다이어그램
