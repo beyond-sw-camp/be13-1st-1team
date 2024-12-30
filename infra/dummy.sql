@@ -2,8 +2,8 @@ use kppong;
 
 -- role
 insert into userType values(1, '관리자');
-insert into grade values(2, '일반 회원');
-insert into grade values(3, '사업자 회원');
+insert into userType values(2, '일반 회원');
+insert into userType values(3, '사업자');
 
 -- grade 골드 실버 브론즈
 insert into grade values(1, '골드');
