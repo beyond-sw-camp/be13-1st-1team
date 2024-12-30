@@ -32,9 +32,9 @@
 
 
 # 요구사항 명세서
-![요구사항 명세서]("C:\Users\Playdata\Desktop\1.jpg")
-![요구사항 명세서2]("C:\Users\Playdata\Desktop\2.jpg")
-![요구사항 명세서3]("C:\Users\Playdata\Desktop\3.jpg")
+![요구사항 명세서](C:\Users\Playdata\Desktop\1.jpg)
+![요구사항 명세서2](C:\Users\Playdata\Desktop\2.jpg)
+![요구사항 명세서3](C:\Users\Playdata\Desktop\3.jpg)
 
 # ERD 다이어그램
 ![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323079883768991774/kppong.png?ex=677335a9&is=6771e429&hm=5dfd52b6b7fda64bce4f6f13a1b90dcc68a60b388b103f84648a9d0a5114624c&)
