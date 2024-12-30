@@ -1,10 +1,10 @@
 -- C
 -- 회원가입
--- CALL insertUser(user_id, `name`, email, passwd, nickName, phoneNum, birthAt, national);
+-- CALL insertUser(userId, `name`, email, passwd, nickName, phoneNum, birthAt, national);
 -- 모두 NOT NULL, 입력 필수
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE insertUser(
-    IN _user_id VARCHAR(15),
+    IN _userId VARCHAR(15),
        `_name` VARCHAR(15),
        _email VARCHAR(40),
        _passwd VARCHAR(40),
@@ -16,10 +16,14 @@ CREATE OR REPLACE PROCEDURE insertUser(
     BEGIN
 
         -- 회원 아이디 중복 방지 조건문
-        IF((SELECT user_id FROM user WHERE user_id = _user_id) IS NULL) THEN
+        IF NOT EXISTS(SELECT userId 
+                      FROM user 
+                      WHERE userId = _userId 
+                         OR email = _email
+                         OR phoneNum = _phoneNum) THEN
         (
             INSERT INTO user (
-                user_id,
+                userId,
                 `name`,
                 email,
                 passwd,
@@ -30,7 +34,7 @@ CREATE OR REPLACE PROCEDURE insertUser(
                 updatedAt
                 )
             VALUES (
-                _user_id,
+                _userId,
                 `_name`,
                 _email,
                 _passwd,
@@ -52,28 +56,70 @@ CREATE OR REPLACE PROCEDURE insertUser(
 DELIMITER ;
 
 -- 회원 경고 생성
--- CALL insertCaution(user_id, reason);
+-- CALL insertCaution(userId, reason);
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE insertCaution(
-    IN _user_id VARCHAR(15),
+    IN _userId VARCHAR(15),
        _reason VARCHAR(200)
     )
 BEGIN
 
-    INSERT INTO caution (
-        user_id,
-        reason,
-        updatedAt
-        ) 
-    VALUES (
-        _user_id,
-        _reason,
-        NULL
-        )
-    ;
+    IF NOT EXISTS(
+        SELECT * FROM user WHERE userId = _userId;
+    )THEN(
+        SELECT "아이디를 확인하세요" AS '인증 오류'
+    )
+    ELSE
+    (
+        INSERT INTO caution (
+            userId,
+            reason,
+            updatedAt
+            ) 
+        VALUES (
+            _userId,
+            _reason,
+            NULL
+            )
+        ;
+    );
 
 END $$
 DELIMITER ;
+
+-- 사업자 인증 신청
+-- CALL insertBusiness(businessNum, name, userId)
+DELIMITER $$
+CRETAE OR REPLACE PROCEDURE insertBusiness(
+    IN _businessNum VARCHAR(15),
+       `_name` VARCHAR(15),
+       _userId VARCHAR(15)
+)
+BEGIN
+
+    INSERT INTO business (
+        businessNum,
+        `name`,
+        updatedAt
+    )
+    VALUES(
+        _businessNum,
+        `_name`,
+        NULL
+    );
+
+    DECLARE _businessId INT;
+    SET _businessId = (SELECT id FROM business WHERE businessNum = _businessNum AND `name` = `_name`);
+
+    UPDATE user
+    SET (
+        businessId = _businessId
+    )
+    WHERE userId = _userId;
+        
+END $$
+DELIMITER ;
+
 
 -- R
 -- 모든 회원 조회
@@ -83,7 +129,7 @@ CREATE OR REPLACE PROCEDURE selectUser()
 BEGIN
 
     SELECT id AS '아이디',
-           user_id AS '회원_아이디',
+           userId AS '회원_아이디',
            grade_id AS '등급_아이디',
            role_id AS '역할_아이디',
            `name` AS '이름',
@@ -103,15 +149,15 @@ END $$
 DELIMITER ;
 
 -- 회원 정보 조회
--- CALL selectOneUserByUser_id(user_id);
+-- CALL selectOneUserByUserId(userId);
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE selectOneUserByUser_id(
-    IN _user_id VARCHAR(15)
+CREATE OR REPLACE PROCEDURE selectOneUserByUserId(
+    IN _userId VARCHAR(15)
     )
 BEGIN
 
     SELECT id AS '아이디',
-           user_id AS '회원_아이디',
+           userId AS '회원_아이디',
            grade_id AS '등급_아이디',
            role_id AS '역할_아이디',
            `name` AS '이름',
@@ -125,25 +171,54 @@ BEGIN
            expDist AS '제적여부',
            business_id AS '사업자정보_아이디'
     FROM user
-    WHERE user_id = _user_id
+    WHERE userId = _userId
+    ;
+
+END $$
+DELIMITER ;
+
+-- 회원 정보 조회(전화번호)
+-- CALL selectOneUserByPhoneNum(userId);
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE selectOneUserByPhoneNum(
+    IN _phonNum VARCHAR(15)
+    )
+BEGIN
+
+    SELECT id AS '아이디',
+           userId AS '회원_아이디',
+           grade_id AS '등급_아이디',
+           role_id AS '역할_아이디',
+           `name` AS '이름',
+           email AS '이메일',
+           nickName AS '닉네임',
+           phoneNum AS '전화번호',
+           birthAt AS '생년월일',
+           national AS '국적',
+           createdAt AS '생성일',
+           updatedAt AS '수정일',
+           expDist AS '제적여부',
+           business_id AS '사업자정보_아이디'
+    FROM user
+    WHERE phoneNum = _phoneNum
     ;
 
 END $$
 DELIMITER ;
 
 -- 로그인
--- CALL loginByUser_id_passwd(user_id, passwd);
+-- CALL loginByUserId_passwd(userId, passwd);
 -- 모두 입력 필수
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE loginByUser_id_passwd(
-    IN _user_id VARCHAR(15),
+CREATE OR REPLACE PROCEDURE loginByUserId_passwd(
+    IN _userId VARCHAR(15),
        _passwd VARCHAR(40)
     )
 BEGIN
 
-    SELECT IF(user_id IS NULL, '로그인 실패', '로그인 성공') AS '로그인 결과'
+    SELECT IF(userId IS NULL, '로그인 실패', '로그인 성공') AS '로그인 결과'
     FROM user
-    WHERE (user_id = _user_id
+    WHERE (userId = _userId
       AND passwd = _passwd
       )
     ;
@@ -151,20 +226,37 @@ BEGIN
 END $$
 DELIMITER ;
 
--- 아이디 찾기
--- CALL selectOneUserByEmail_phoneNum(email, phoneNum);
+-- 아이디 찾기(이메일)
+-- CALL selectOneUser_userIdByEmail(email);
 -- 모두 입력 필수
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE selectOneUserByEmail_phoneNum(
+CREATE OR REPLACE PROCEDURE selectOneUser_userIdByEmail(
+    IN _email VARCHAR(40)
+    )
+BEGIN
+
+    SELECT IFNULL(userId, '등록된 아이디가 없습니다') AS '회원 아이디'
+    FROM user
+    WHERE (email = _email
+      )
+    ;
+
+END $$
+DELIMITER ;
+
+-- 아이디 찾기(전화번호)
+-- CALL selectOneUser_userIdByPhoneNum(phoneNum);
+-- 모두 입력 필수
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE selectOneUser_userIdByPhoneNum(
     IN _email VARCHAR(40),
        _phoneNum VARCHAR(15)
     )
 BEGIN
 
-    SELECT IFNULL(user_id, '등록된 아이디가 없습니다') AS '회원 아이디'
+    SELECT IFNULL(userId, '등록된 아이디가 없습니다') AS '회원 아이디'
     FROM user
-    WHERE (email = _email
-      AND phoneNum = _phoneNum
+    WHERE (phoneNum = _phoneNum
       )
     ;
 
@@ -173,33 +265,62 @@ DELIMITER ;
 
 -- U
 -- 비밀번호 변경
--- CALL updateOneUserByUser_id(user_id, passwd, updatePasswd);
+-- CALL updateOneUser_passwdByUserId(userId, passwd, updatePasswd);
 -- 모두 입력 필수
 -- updatePasswd 는 변경하려는 비밀번호
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE updateOneUserByUser_id(
-    IN _user_id VARCHAR(15),
+CREATE OR REPLACE PROCEDURE updateOneUser_passwdByUserId(
+    IN _userId VARCHAR(15),
        _passwd VARCHAR(40),
        _updatePasswd VARCHAR(40)
     )
 BEGIN
-
-    UPDATE user 
-    SET passwd = _updatePasswd
-    WHERE (user_id = _user_id
-      AND passwd = _passwd
-      )
+    IF NOT EXISTS(
+        SELECT * FROM user WHERE userId = _userId AND passwd = _passwd;
+    )THEN(
+        SELECT "아이디 또는 비밀번호를 확인하세요" AS '인증 오류'
+    )
+    ELSE
+    (
+        UPDATE user 
+        SET passwd = _updatePasswd
+        WHERE (userId = _userId
+        AND passwd = _passwd
+        )
+    )
     ;
 
 END $$
 DELIMITER ;
 
--- 정보 수정
--- CALL updateOneUserByUser_id_passwd(user_id, passwd, `name`, email, nickName, phoneNum, birthAt, national);
+
+-- 사업자 인증 권한 수정
+-- CALL updateBusinessByBusinessNum(businessNum, certDist)
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE updateBusinessByBusinessNum(
+    IN _businessNum VARCHAR(15),
+       _certDist VARCHAR(1)
+
+)
+BEGIN
+
+    UPDATE business
+    SET (
+        certDist = _certDist,
+        certedAt = CURDATE(),
+        updatedAt = CURDATE())
+    WHERE (businessNum = _businessNum);
+
+END $$
+DELIMITER ;
+
+
+-- 개인정보 수정
+-- CALL updateOneUserByUserId_passwd(userId, passwd, `name`, email, nickName, phoneNum, birthAt, national);
 -- 지정하지 않는 정보는 기존 정보 그대로 저장
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE updateOneUserByUser_id_passwd(
-    IN _user_id VARCHAR(15),
+CREATE OR REPLACE PROCEDURE updateOneUserByUserId_passwd(
+    IN _userId VARCHAR(15),
        _passwd VARCHAR(40),
        `_name` VARCHAR(40),
        _email VARCHAR(40),
@@ -209,8 +330,12 @@ CREATE OR REPLACE PROCEDURE updateOneUserByUser_id_passwd(
        _national VARCHAR(15)
     )
 BEGIN
-
-    UPDATE user
+    IF NOT EXISTS(
+        SELECT * FROM user WHERE userId = _userId AND passwd = _passwd;
+    )THEN(
+        "아이디 또는 비밀번호를 확인하세요" AS '인증 오류'
+    )ELSE(
+        UPDATE user
     SET(
         `name` = IFNULL(_name, `name`),
         email = IFNULL(_email, email),
@@ -219,10 +344,12 @@ BEGIN
         birthAt = IFNULL(_birthAt, birthAt),
         national = IFNULL(_national, national)
         )
-    WHERE (user_id = _user_id
+    WHERE (userId = _userId
       AND passwd = _passwd
       )
     ;
+    )
+    END IF;
 
 END $$
 DELIMITER ;
@@ -247,11 +374,11 @@ END $$
 DELIMITER ;
 
 -- 회원 제적
--- CALL updateOneUser_expDistByUser_id(user_id, expDist, report_id);
+-- CALL updateOneUser_expDistByUserId(userId, expDist, report_id);
 -- report_id 지정하지 않을 시 NULL
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE updateOneUser_expDistByUser_id(
-    IN _user_id VARCHAR(15),
+CREATE OR REPLACE PROCEDURE updateOneUser_expDistByUserId(
+    IN _userId VARCHAR(15),
        _expDist VARCHAR(1),
        _report_id INT
     )
@@ -262,24 +389,29 @@ BEGIN
         expDist = _expDist,
         report_id = IFNULL(_report_id, NULL)
     )
-    WHERE user_id = _user_id
+    WHERE userId = _userId
 END $$
 DELIMITER ;
 
 -- D
 -- 회원 탈퇴
--- CALL deleteOneUserByUser_id(user_id, passwd);
+-- CALL deleteOneUserByUserId(userId, passwd);
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE deleteOneUserByUser_id(
-    IN _user_id VARCHAR(15),
+CREATE OR REPLACE PROCEDURE deleteOneUserByUserId(
+    IN _userId VARCHAR(15),
        _passwd VARCHAR(40)
     )
 BEGIN
-
-    DELETE FROM user
-    WHERE (user_id = _user_id
-      AND passwd = _passwd
-      )
+    IF NOT EXISTS(
+        SELECT * FROM user WHERE userId = _userId AND passwd = _passwd;
+    )THEN(
+        "아이디 또는 비밀번호를 확인하세요" AS '인증 오류'
+    )ELSE(
+        DELETE FROM user
+        WHERE (userId = _userId
+        AND passwd = _passwd
+        )
+    )
     ;
 
 END $$
@@ -296,6 +428,29 @@ BEGIN
     DELETE FROM caution
     WHERE id = _id
     ;
+
+END $$
+DELIMITER ;
+
+-- 회원 제적
+-- TRIGGER updateOneUser_isExpelledBySystem
+DELIMITER $$
+CREATE OR REPLACE TRIGGER updateOneUser_isExpelledBySystem
+AFTER INSERT ON caution
+FOR EACH ROW
+BEGIN
+
+    DECLARE _userId INT;
+    SET _userId = (SELECT userId FROM caution ORDER BY createdAt DESC LIMIT 1);
+
+    IF(SELECT COUNT(*)
+        FROM caution 
+        WHERE userId = _userId >= 3)
+    THEN(
+        UPDATE user
+        SET isExpelled = 'Y'
+        WHERE userId = _userId;
+    )
 
 END $$
 DELIMITER ;
