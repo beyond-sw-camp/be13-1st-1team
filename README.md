@@ -31,8 +31,8 @@
 # 기술스택
 
 
-# 요구사항 정의서
-
+# 요구사항 명세서
+![요구사항 명세서](file:///C:/Users/Playdata/Downloads/%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%EC%A0%95%EC%9D%98%EC%84%9C(%ED%81%AC%EB%BD%95)%20-%20%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B8%EC%84%9C.pdf)
 
 # ERD 다이어그램
 ![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323079883768991774/kppong.png?ex=677335a9&is=6771e429&hm=5dfd52b6b7fda64bce4f6f13a1b90dcc68a60b388b103f84648a9d0a5114624c&)
