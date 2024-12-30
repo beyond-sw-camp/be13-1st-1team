@@ -68,15 +68,17 @@ DELIMITER ;
 -- 판매자가 진행, 확정, 만료인 상품을 삭제할 수 없다.
 DELIMITER $$
 
+DELIMITER $$
+
 CREATE OR REPLACE PROCEDURE updatePackage(
-    IN packageId INT,
-    IN newCultureArea INT,
-    IN newName VARCHAR(255),
-    IN newPrice INT,
-    IN newInfo TEXT,
-    IN newStartDate DATETIME,
-    IN newEndDate DATETIME,
-    IN newDeadlineDate DATETIME
+    IN uid INT,                -- package의 id
+    IN newCultureArea INT,     -- 새로운 문화 영역
+    IN packageName VARCHAR(15), -- 새로운 패키지 이름
+    IN packagePrice INT,       -- 새로운 가격
+    IN packageInfo TEXT,       -- 새로운 패키지 정보
+    IN newStartDate DATETIME,  -- 새로운 시작 날짜
+    IN newEndDate DATETIME,    -- 새로운 종료 날짜
+    IN newDeadlineDate DATETIME -- 새로운 마감 날짜
 )
 BEGIN
     -- BEGIN 블록의 가장 상단에서 변수 선언
@@ -92,27 +94,27 @@ BEGIN
         SET param_count = param_count + 1;
     END IF;
 
-    IF newName IS NOT NULL THEN
+    IF packageName IS NOT NULL THEN
         IF param_count > 0 THEN
             SET sql_query = CONCAT(sql_query, ', ');
         END IF;
-        SET sql_query = CONCAT(sql_query, 'name = "', REPLACE(newName, '"', '\"'), '"');
+        SET sql_query = CONCAT(sql_query, 'name = "', REPLACE(packageName, '"', '\"'), '"');
         SET param_count = param_count + 1;
     END IF;
 
-    IF newPrice IS NOT NULL THEN
+    IF packagePrice IS NOT NULL THEN
         IF param_count > 0 THEN
             SET sql_query = CONCAT(sql_query, ', ');
         END IF;
-        SET sql_query = CONCAT(sql_query, 'price = ', newPrice);
+        SET sql_query = CONCAT(sql_query, 'price = ', packagePrice);
         SET param_count = param_count + 1;
     END IF;
 
-    IF newInfo IS NOT NULL THEN
+    IF packageInfo IS NOT NULL THEN
         IF param_count > 0 THEN
             SET sql_query = CONCAT(sql_query, ', ');
         END IF;
-        SET sql_query = CONCAT(sql_query, 'info = "', REPLACE(newInfo, '"', '\"'), '"');
+        SET sql_query = CONCAT(sql_query, 'info = "', REPLACE(packageInfo, '"', '\"'), '"');
         SET param_count = param_count + 1;
     END IF;
 
@@ -141,7 +143,7 @@ BEGIN
     END IF;
 
     -- WHERE 조건 추가
-    SET sql_query = CONCAT(sql_query, ' WHERE id = ', packageId);
+    SET sql_query = CONCAT(sql_query, ' WHERE id = ', uid);
 
     -- 디버깅용 SQL 출력
     SELECT sql_query AS DebugSQL;

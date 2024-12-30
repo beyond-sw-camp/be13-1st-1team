@@ -25,11 +25,11 @@ CREATE OR REPLACE PROCEDURE createNewCaution(
 BEGIN
     -- 신고 처리 결과 수정
     update report
-    set reportResult = result
+    set reportResult = result, reportDist = 'Y'
     where id = reportId;
 
     -- 경고 테이블 추가(user_id, reason)
-    insert into caution(user_id, reason)
+    insert into caution(userId, reason)
     values (userId, cautionReason);
 
 END$$
@@ -44,7 +44,7 @@ CREATE OR REPLACE PROCEDURE rejectReport(
 BEGIN
     -- 신고 처리 결과 수정
     update report
-    set reportResult = result
+    set reportResult = result, reportDist = 'Y'
     where id = reportId;
 END$$
 DELIMITER ;
