@@ -20,16 +20,16 @@ CREATE OR REPLACE PROCEDURE createNewCaution(
     IN reportId int, -- 신고 id
     IN userId int, -- 사용자 id
     IN result TEXT, -- 신고 처리 결과
-    IN cautionReason varchar -- 경고 사유
+    IN cautionReason varchar(200) -- 경고 사유
 )
 BEGIN
     -- 신고 처리 결과 수정
     update report
-    set reportResult = result
+    set reportResult = result, reportDist = 'Y'
     where id = reportId;
 
     -- 경고 테이블 추가(user_id, reason)
-    insert into caution(user_id, reason)
+    insert into caution(userId, reason)
     values (userId, cautionReason);
 
 END$$
@@ -44,15 +44,14 @@ CREATE OR REPLACE PROCEDURE rejectReport(
 BEGIN
     -- 신고 처리 결과 수정
     update report
-    set reportResult = result
+    set reportResult = result, reportDist = 'Y'
     where id = reportId;
 END$$
 DELIMITER ;
 
 -- 관리자는 시스템에 의해 신고 내역을 삭제할 수 없다.
 -- 프로시저보단 트리거, 유저의 접근 권한으로 제어 하는 것이 적절하다고 생각함
-DELIMITER //
-
+DELIMITER $$
 CREATE TRIGGER prevent_report_delete
     BEFORE DELETE ON report
     FOR EACH ROW
@@ -62,8 +61,6 @@ BEGIN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Partial deletion is not allowed. Only full table deletion is permitted.';
     END IF;
-END;
-//
-
+END$$;
 DELIMITER ;
 
