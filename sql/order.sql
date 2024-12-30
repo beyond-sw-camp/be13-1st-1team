@@ -40,7 +40,7 @@ END $$
 DELIMITER ;
 
 
---  주문자가 확정 상태인 주문을 수정할 수 없다.			
+--  주문자가 확정, 취소중이면 주문을 수정할 수 없다.			
 DELIMITER $$
 
 CREATE PROCEDURE UpdateOrderStatusToConfirmed(IN p_orderId INT, IN p_userId INT)
@@ -57,12 +57,12 @@ DELIMITER ;
 
 
 
--- 주문 확정	판매자가 진행 상태인 주문을 확정할 수 있다.			
+-- 주문자가 진행중 주문을 결제하면 확정			
 DELIMITER $$
 
 CREATE PROCEDURE ConfirmOrder(IN p_orderId INT, IN p_userId INT)
 BEGIN
-    IF EXISTS (SELECT 1 FROM `order` WHERE `id` = p_orderId AND `userId` = p_userId AND `status` = 1) THEN
+    IF EXISTS (SELECT 1 FROM `order` WHERE `id` = p_orderId AND `userId` = p_userId AND `status` = 1 AND isPay = 'Y') THEN
         UPDATE `order` 
         SET `status` = 2, `updatedAt` = NOW() 
         WHERE `id` = p_orderId;
@@ -74,12 +74,12 @@ END $$
 DELIMITER ;
 
 
--- 주문 삭제	주문자가 대기 상태인 주문을 삭제할 수 있다.			
+-- 주문자가 진행중인 주문을 삭제할 수 있다.			
 DELIMITER $$
 
 CREATE PROCEDURE DeleteOrder(IN p_orderId INT, IN p_userId INT)
 BEGIN
-    IF EXISTS (SELECT 1 FROM `order` WHERE `id` = p_orderId AND `userId` = p_userId AND `status` = 0) THEN
+    IF EXISTS (SELECT 1 FROM `order` WHERE `id` = p_orderId AND `userId` = p_userId AND `status` = 1) THEN
         DELETE FROM `order` WHERE `id` = p_orderId;
     ELSE
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = '주문 상태가 대기가 아닙니다.';
