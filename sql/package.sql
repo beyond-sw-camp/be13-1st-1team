@@ -152,10 +152,17 @@ DELIMITER ;
 
 -- 판매자가 대기 상태인 상품을 삭제할 수 있다.
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE deletePackage(
+CREATE OR REPLACE PROCEDURE deletePackageBySeller(
     IN packageId INT
 )
 BEGIN
+    -- 조건 확인: deadlineDate가 오늘 날짜보다 이전인지 확인
+    IF (SELECT COUNT(*) FROM package WHERE id = packageId AND deadlineDate < CURDATE()) > 0 THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Cannot update. The deadlineDate is earlier than today.';
+        RETURN; -- 조건이 만족하면 프로시저 종료
+    END IF;
+    
     delete from package
     where id = packageId;
 END$$
@@ -163,7 +170,7 @@ DELIMITER ;
 
 -- 부적절한 상품에 대해 관리자가 삭제 처리할 수 있다.
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE deletePackage(
+CREATE OR REPLACE PROCEDURE deletePackageByManager(
     IN packageId INT
 )
 BEGIN
