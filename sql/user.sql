@@ -112,11 +112,13 @@ BEGIN
         INSERT INTO business (
             businessNum,
             `name`,
+            userId,
             updatedAt
         )
         VALUES(
             _businessNum,
             `_name`,
+            _userId,
             NULL
         );
     ELSE
@@ -133,13 +135,10 @@ CREATE OR REPLACE TRIGGER updateOneUser_businessIdBySystem
 AFTER INSERT ON business
 FOR EACH ROW
 BEGIN
-
-	DECLARE _userId VARCHAR(15);
-	SET _userId = (SELECT userId FROM user WHERE businessId = NEW.id);
 	
  	UPDATE user
     SET businessId = NEW.id
-    WHERE userId = _userId;
+    WHERE userId = NEW.userId;
         
 END $$
 DELIMITER ;
