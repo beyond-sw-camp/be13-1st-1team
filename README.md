@@ -32,17 +32,53 @@
 
 
 # 요구사항 명세서
-![요구사항 명세서](https://drive.google.com/drive/recent)
-![요구사항 명세서2](https://drive.google.com/drive/recent)
-![요구사항 명세서3](https://cdn.discordapp.com/attachments/1318411133933060198/1323103518487347351/-__page-0003.jpg?ex=67734bac&is=6771fa2c&hm=0f42a3aff1a77bb8ed0b4f1649c42b10d2ed23c8aebcdf01eaca113246a53ea3&)
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
+
+![요구사항 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897410318438/page-0001.jpg?ex=67737d63&is=67722be3&hm=fa7aca5c263e2445a399c2f7d3f3de0af0afb0d212f173977e720fe56d9f9481&)
+![요구사항 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323156897813237760/page-0002.jpg?ex=67737d63&is=67722be3&hm=8245fd28a3c5f9c3a6a0918fba954da714bbfc67a366c85c937669aaa8b7b452&)
+
+
+</div>
+</details>
 
 # ERD 다이어그램
-![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323079883768991774/kppong.png?ex=677335a9&is=6771e429&hm=5dfd52b6b7fda64bce4f6f13a1b90dcc68a60b388b103f84648a9d0a5114624c&)
+![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323154783665651732/kppong.png?ex=67737b6b&is=677229eb&hm=b406acae3db96670c3a968cce0918b1e3bf51332ced725d79b3d8854aa78f83d&)
 
 # 테이블 명세서
 
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
+![테이블 명세서 1](https://cdn.discordapp.com/attachments/1318411133933060198/1323157096627437568/page-0001.jpg?ex=67737d92&is=67722c12&hm=f6559fca55a1ac20f226f4c340d0c13d1e77aa2e1113fc016b59c33d67a07130&)
+![테이블 명세서 2](https://cdn.discordapp.com/attachments/1318411133933060198/1323157096983822459/page-0002.jpg?ex=67737d92&is=67722c12&hm=bf49339cf99a4724139b0271587f6d223c0e241978b1c860300e9cf1c5958fa6&)
+![테이블 명세서 3](https://cdn.discordapp.com/attachments/1318411133933060198/1323157731078832150/3.jpg?ex=67737e2a&is=67722caa&hm=b5fe6b5da0afb735713aa9a7337b146e5a494580c52d1b33a9d075085cbd740b&)
+
+
+</div>
+</details>
+
 
 # 테스트 명세서
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
 
+테스트 명세서
+
+</div>
+</details>
 
 # 프로시저 명세서
+
+<details>
+<summary>토글 접기/펼치기</summary>
+<div markdown="1">
+
+프로시저 명세서
+
+</div>
+</details>
