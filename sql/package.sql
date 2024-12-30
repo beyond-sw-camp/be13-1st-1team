@@ -7,21 +7,21 @@ BEGIN
            p.endDate, p.deadlineDate, a.name, cc.name
     FROM package p inner join cultureArea c on p.cultureArea = c.id
                    inner join areaCategory a on c.area = a.no
-                   inner join cultureCateory cc on c.cultureCategory = cc.id;
+                   inner join cultureCategory cc on c.cultureCategory = cc.id;
 END$$
 DELIMITER ;
 
 -- catogory 조회
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE getPackagesByCategory(
-    IN category varchar
+    IN category varchar(10)
 )
 BEGIN
     SELECT p.name, p.price, p.info, p.startDate,
            p.endDate, p.deadlineDate, a.name, cc.name
     FROM package p inner join cultureArea c on p.cultureArea = c.id
     inner join areaCategory a on c.area = a.no
-    inner join cultureCateory cc on c.cultureCategory = cc.id
+    inner join cultureCategory cc on c.cultureCategory = cc.id
     where cc.name like category;
 END$$
 DELIMITER ;
@@ -29,14 +29,14 @@ DELIMITER ;
 -- 지역 조회
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE getPackagesByArea(
-    IN area varchar
+    IN area varchar(15)
 )
 BEGIN
     SELECT p.name, p.price, p.info, p.startDate,
            p.endDate, p.deadlineDate, a.name, cc.name
     FROM package p inner join cultureArea c on p.cultureArea = c.id
                    inner join areaCategory a on c.area = a.no
-                   inner join cultureCateory cc on c.cultureCategory = cc.id
+                   inner join cultureCategory cc on c.cultureCategory = cc.id
     where a.name like area;
 END$$
 DELIMITER ;
@@ -47,13 +47,20 @@ DELIMITER ;
 DELIMITER $$
 CREATE OR REPLACE PROCEDURE createPackage(
     IN uid int,
-    IN packageName varchar,
+    IN newCultureArea INT,
+    IN packageName varchar(15),
     IN packagePrice int,
-    IN packageInfo text
+    IN packageInfo text,
+    IN newStartDate DATETIME,
+    IN newEndDate DATETIME,
+    IN newDeadlineDate DATETIME
+
 )
 BEGIN
-    insert into package(userId, name, price, info)
-    values(uid, packageName, packagePrice, packageInfo);
+    insert into package(userId, cultureArea, name, 
+    price, info, startDate, endDate, deadlineDate)
+    values(uid, newCultureArea, packageName, packagePrice, 
+    packageInfo, newStartDate, newEndDate, newDeadlineDate);
 END$$
 DELIMITER ;
 
@@ -63,27 +70,20 @@ DELIMITER $$
 
 CREATE OR REPLACE PROCEDURE updatePackage(
     IN packageId INT,
-    IN newCultureArea INT DEFAULT NULL,
-    IN newName VARCHAR(255) DEFAULT NULL,
-    IN newPrice INT DEFAULT NULL,
-    IN newInfo TEXT DEFAULT NULL,
-    IN newStartDate DATETIME DEFAULT NULL,
-    IN newEndDate DATETIME DEFAULT NULL,
-    IN newDeadlineDate DATETIME DEFAULT NULL
+    IN newCultureArea INT,
+    IN newName VARCHAR(255),
+    IN newPrice INT,
+    IN newInfo TEXT,
+    IN newStartDate DATETIME,
+    IN newEndDate DATETIME,
+    IN newDeadlineDate DATETIME
 )
 BEGIN
-    -- 조건 확인: deadlineDate가 오늘 날짜보다 이전인지 확인
-    IF (SELECT COUNT(*) FROM package WHERE id = packageId AND deadlineDate < CURDATE()) > 0 THEN
-        SIGNAL SQLSTATE '45000'
-            SET MESSAGE_TEXT = 'Cannot update. The deadlineDate is earlier than today.';
-        RETURN; -- 조건이 만족하면 프로시저 종료
-    END IF;
+    -- BEGIN 블록의 가장 상단에서 변수 선언
+    DECLARE sql_query TEXT DEFAULT '';
+    DECLARE param_count INT DEFAULT 0;
 
-    -- 동적 SQL 쿼리를 저장할 변수 선언
-    DECLARE sql_query TEXT;
-    DECLARE param_count INT DEFAULT 0; -- 매개변수 개수를 카운트
-
-    -- 기본 SQL 템플릿
+    -- 기본 SQL 초기화
     SET sql_query = 'UPDATE package SET ';
 
     -- 조건부로 매개변수 추가
@@ -96,7 +96,7 @@ BEGIN
         IF param_count > 0 THEN
             SET sql_query = CONCAT(sql_query, ', ');
         END IF;
-        SET sql_query = CONCAT(sql_query, 'name = "', newName, '"');
+        SET sql_query = CONCAT(sql_query, 'name = "', REPLACE(newName, '"', '\"'), '"');
         SET param_count = param_count + 1;
     END IF;
 
@@ -112,7 +112,7 @@ BEGIN
         IF param_count > 0 THEN
             SET sql_query = CONCAT(sql_query, ', ');
         END IF;
-        SET sql_query = CONCAT(sql_query, 'info = "', newInfo, '"');
+        SET sql_query = CONCAT(sql_query, 'info = "', REPLACE(newInfo, '"', '\"'), '"');
         SET param_count = param_count + 1;
     END IF;
 
@@ -140,15 +140,20 @@ BEGIN
         SET param_count = param_count + 1;
     END IF;
 
-    -- WHERE 조건 추가 (packageId는 필수 매개변수)
+    -- WHERE 조건 추가
     SET sql_query = CONCAT(sql_query, ' WHERE id = ', packageId);
+
+    -- 디버깅용 SQL 출력
+    SELECT sql_query AS DebugSQL;
 
     -- 동적 SQL 실행
     PREPARE stmt FROM sql_query;
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
-END $$;
+END$$
+
 DELIMITER ;
+
 
 -- 판매자가 대기 상태인 상품을 삭제할 수 있다.
 DELIMITER $$
@@ -160,7 +165,6 @@ BEGIN
     IF (SELECT COUNT(*) FROM package WHERE id = packageId AND deadlineDate < CURDATE()) > 0 THEN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Cannot update. The deadlineDate is earlier than today.';
-        RETURN; -- 조건이 만족하면 프로시저 종료
     END IF;
     
     delete from package
@@ -184,10 +188,10 @@ DELIMITER $$
 CREATE OR REPLACE PROCEDURE createReport(
     IN myId int,
     IN otherId int,
-    IN reportReason varchar
+    IN reportReason varchar(200)
 )
 BEGIN
     insert into report(reportingId, reported_user_id, reason)
-    values(myId, otherId, reportReason)
+    values(myId, otherId, reportReason);
 END$$
 DELIMITER ;
