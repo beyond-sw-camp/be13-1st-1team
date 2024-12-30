@@ -33,7 +33,7 @@
 
 # 요구사항 명세서
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary> #### 요구사항 명세서 </summary>
 <div markdown="1">
 
 
@@ -50,7 +50,7 @@
 # 테이블 명세서
 
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary> #### 테이블 명세서 </summary>
 <div markdown="1">
 
 ![테이블 명세서 1](https://cdn.discordapp.com/attachments/1318411133933060198/1323157096627437568/page-0001.jpg?ex=67737d92&is=67722c12&hm=f6559fca55a1ac20f226f4c340d0c13d1e77aa2e1113fc016b59c33d67a07130&)
@@ -64,10 +64,12 @@
 
 # 테스트 명세서
 <details>
-<summary>토글 접기/펼치기</summary>
+<summary> #### 테스트 명세서 </summary>
 <div markdown="1">
 
-테스트 명세서
+![테스트 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323225912157671424/--0.jpg?ex=6773bda9&is=67726c29&hm=58eb817a2f1dcc364ff20c159bc50b0f809b73afd2a579f44438e61abb71fd35&)
+![테스트 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323225912656924712/--1.jpg?ex=6773bda9&is=67726c29&hm=043014a5b7b4be3ba1f06f13303250f5aebfa07a82c40d389d27a34172bcddc6&)
+
 
 </div>
 </details>
