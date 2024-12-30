@@ -32,91 +32,91 @@ insert into cultureCategory(name) values('여가');
 insert into cultureArea(name, cultureCategory, area)
 values('경복궁', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('창경궁', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('국립중앙박물관', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('롯데월드', 
 (select id from cultureCategory where name = '오락'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('서울숲', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('보라매공원', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('하늘공원', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('여의도공원', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('더현대서울', 
 (select id from cultureCategory where name = '쇼핑'),
-(select id from areaCategory where name = '서울')
+(select no from areaCategory where name = '서울')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('스타필드하남', 
 (select id from cultureCategory where name = '쇼핑'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('에버랜드', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('광교호수공원', 
 (select id from cultureCategory where name = '여가'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('수원화성', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
 
 insert into cultureArea(name, cultureCategory, area)
 values('방화수류정', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
 insert into cultureArea(name, cultureCategory, area)
 values('남한산성', 
 (select id from cultureCategory where name = '문화'),
-(select id from areaCategory where name = '경기')
+(select no from areaCategory where name = '경기')
 );
 
