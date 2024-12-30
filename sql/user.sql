@@ -11,17 +11,16 @@ CREATE OR REPLACE PROCEDURE insertUser(
        _nickname VARCHAR(15),
        _phoneNum VARCHAR(15),
        _birthAt DATE,
-       _national VARCHAR(15),
+       _national VARCHAR(15)
        )
-    BEGIN
+BEGIN
+    -- 회원 아이디 중복 방지 조건문
+    DECLARE _cnt INT;
+	SET _cnt = (SELECT COUNT(*) FROM user WHERE userId = _userId);
 
-        -- 회원 아이디 중복 방지 조건문
-        IF NOT EXISTS(SELECT userId 
-                      FROM user 
-                      WHERE userId = _userId 
-                         OR email = _email
-                         OR phoneNum = _phoneNum) THEN
-        (
+    IF (
+        _cnt < 1 
+    )THEN
             INSERT INTO user (
                 userId,
                 `name`,
@@ -45,14 +44,12 @@ CREATE OR REPLACE PROCEDURE insertUser(
                 NULL
                 )
             ;
-        )
-        ELSE
-            (
-                SELECT '이미 존재하는 회원 아이디입니다.';
-            )
-        END IF;
+    ELSE
+        SELECT '이미 존재하는 회원 아이디입니다.';
+            
+    END IF;
 
-    END $$
+END $$
 DELIMITER ;
 
 -- 회원 경고 생성
@@ -130,8 +127,8 @@ BEGIN
 
     SELECT id AS '아이디',
            userId AS '회원_아이디',
-           grade_id AS '등급_아이디',
-           role_id AS '역할_아이디',
+           gradeId AS '등급_아이디',
+           userType AS '역할_아이디',
            `name` AS '이름',
            email AS '이메일',
            nickName AS '닉네임',
@@ -140,8 +137,8 @@ BEGIN
            national AS '국적',
            createdAt AS '생성일',
            updatedAt AS '수정일',
-           expDist AS '제적여부',
-           business_id AS '사업자정보_아이디'
+           isExpelled AS '제적여부',
+           businessId AS '사업자정보_아이디'
     FROM user
     ;
 
@@ -155,24 +152,33 @@ CREATE OR REPLACE PROCEDURE selectOneUserByUserId(
     IN _userId VARCHAR(15)
     )
 BEGIN
-
-    SELECT id AS '아이디',
-           userId AS '회원_아이디',
-           grade_id AS '등급_아이디',
-           role_id AS '역할_아이디',
-           `name` AS '이름',
-           email AS '이메일',
-           nickName AS '닉네임',
-           phoneNum AS '전화번호',
-           birthAt AS '생년월일',
-           national AS '국적',
-           createdAt AS '생성일',
-           updatedAt AS '수정일',
-           expDist AS '제적여부',
-           business_id AS '사업자정보_아이디'
-    FROM user
-    WHERE userId = _userId
-    ;
+	
+	DECLARE _cnt INT;
+	SET _cnt = (SELECT COUNT(*) FROM user WHERE userId = _userId);
+	
+   IF (
+      _cnt >= 1 
+   )THEN
+        SELECT id AS '아이디',
+            userId AS '회원_아이디',
+            gradeId AS '등급_아이디',
+            userType AS '역할_아이디',
+            `name` AS '이름',
+            email AS '이메일',
+            nickName AS '닉네임',
+            phoneNum AS '전화번호',
+            birthAt AS '생년월일',
+            national AS '국적',
+            createdAt AS '생성일',
+            updatedAt AS '수정일',
+            isExpelled AS '제적여부',
+            businessId AS '사업자정보_아이디'
+        FROM user
+        WHERE userId = _userId;
+    ELSE
+        SELECT '아이디를 확인하세요' AS '회원 오류';
+    
+    END IF;
 
 END $$
 DELIMITER ;
@@ -187,8 +193,8 @@ BEGIN
 
     SELECT id AS '아이디',
            userId AS '회원_아이디',
-           grade_id AS '등급_아이디',
-           role_id AS '역할_아이디',
+           gradeId AS '등급_아이디',
+           userType AS '역할_아이디',
            `name` AS '이름',
            email AS '이메일',
            nickName AS '닉네임',
@@ -197,8 +203,8 @@ BEGIN
            national AS '국적',
            createdAt AS '생성일',
            updatedAt AS '수정일',
-           expDist AS '제적여부',
-           business_id AS '사업자정보_아이디'
+           isExpelled AS '제적여부',
+           business AS '사업자정보_아이디'
     FROM user
     WHERE phoneNum = _phoneNum
     ;
@@ -374,20 +380,20 @@ END $$
 DELIMITER ;
 
 -- 회원 제적
--- CALL updateOneUser_expDistByUserId(userId, expDist, report_id);
--- report_id 지정하지 않을 시 NULL
+-- CALL updateOneUser_isExpelledByUserId(userId, isExpelled, reportId);
+-- reportId 지정하지 않을 시 NULL
 DELIMITER $$
-CREATE OR REPLACE PROCEDURE updateOneUser_expDistByUserId(
+CREATE OR REPLACE PROCEDURE updateOneUser_isExpelledByUserId(
     IN _userId VARCHAR(15),
-       _expDist VARCHAR(1),
-       _report_id INT
+       _isExpelled VARCHAR(1),
+       _reportId INT
     )
 BEGIN
 
     UPDATE user
     SET (
-        expDist = _expDist,
-        report_id = IFNULL(_report_id, NULL)
+        isExpelled = _isExpelled,
+        reportId = IFNULL(_reportId, NULL)
     )
     WHERE userId = _userId
 END $$
