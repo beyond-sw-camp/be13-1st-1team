@@ -34,7 +34,7 @@
 # 요구사항 명세서
 ![요구사항 명세서](https://drive.google.com/drive/recent)
 ![요구사항 명세서2](https://drive.google.com/drive/recent)
-![요구사항 명세서3](https://drive.google.com/drive/recent)
+![요구사항 명세서3](https://cdn.discordapp.com/attachments/1318411133933060198/1323103518487347351/-__page-0003.jpg?ex=67734bac&is=6771fa2c&hm=0f42a3aff1a77bb8ed0b4f1649c42b10d2ed23c8aebcdf01eaca113246a53ea3&)
 
 # ERD 다이어그램
 ![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323079883768991774/kppong.png?ex=677335a9&is=6771e429&hm=5dfd52b6b7fda64bce4f6f13a1b90dcc68a60b388b103f84648a9d0a5114624c&)
