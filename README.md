@@ -1,5 +1,5 @@
 # Kppong
-   
+![배경]("C:\Users\Playdata\Desktop\3620d8de43581279a61f4ea6a3e50752.jpg")
 
 
 # 🫡팀원소개
@@ -31,11 +31,13 @@
 # 기술스택
 
 
-# 요구사항 정의서
-
+# 요구사항 명세서
+![요구사항 명세서](https://cdn.discordapp.com/attachments/1318411133933060198/1323098503127367803/-__page-0001.jpg?ex=67734701&is=6771f581&hm=41e34ccc937fbbf797330bbbd8445f139f0175c22b99480a141cad558465213a&)
+![요구사항 명세서2](https://cdn.discordapp.com/attachments/1318411133933060198/1323098503127367803/-__page-0001.jpg?ex=67734701&is=6771f581&hm=41e34ccc937fbbf797330bbbd8445f139f0175c22b99480a141cad558465213a&)
+![요구사항 명세서3](https://cdn.discordapp.com/attachments/1318411133933060198/1323098504154976296/-__page-0003.jpg?ex=67734701&is=6771f581&hm=329b39201c1a6e6d4acba67cee1fb0a48d7a53cdf7dcc06fc6fb339538c48074&)
 
 # ERD 다이어그램
-
+![erdCloud](https://cdn.discordapp.com/attachments/1318411133933060198/1323079883768991774/kppong.png?ex=677335a9&is=6771e429&hm=5dfd52b6b7fda64bce4f6f13a1b90dcc68a60b388b103f84648a9d0a5114624c&)
 
 # 테이블 명세서
 
