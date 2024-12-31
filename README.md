@@ -157,8 +157,9 @@ Master - Slave Replication
 <summary> <b> 프로시저 명세서 </b> </summary>
 <div markdown="1">
 
-![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138528587886/page-0001.jpg?ex=67743338&is=6772e1b8&hm=15cc04669d20fd5c7737d7795f4be512caff3e3923d304cddadb4751a467e34c&)
-![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138209951856/page-0003.jpg?ex=67743338&is=6772e1b8&hm=8cf09b814c8873039179d93a676e46b9d4aa2fc1dde1afe78278c3c744e89787&)
+<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0001.jpg"/>
+<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0002.jpg"/>
+<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0003.jpg"/>
 
 </div>
 </details>
