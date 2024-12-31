@@ -76,7 +76,9 @@ CQRS(Command Query Responsibility Segregation)
 - 데이터의 명령(Command)과 조회(Query)를 분리하는 아키텍처 패턴
 - 명령 작업과 조회 작업을 독립적으로 최적화 가능
 
-Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave DB에서 조회
+Master - Slave Replication
+- Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave DB에서 조회
+- 백업 및 트래픽 분산 가능
 
 
 <br/>
