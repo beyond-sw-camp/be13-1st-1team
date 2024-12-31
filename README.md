@@ -44,8 +44,6 @@
 
 # 🍔 기술스택
 
-
-![Ubuntu](https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=FFFFFF)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
 
@@ -63,6 +61,16 @@
 
 # 🍔 아키텍처
 <img src="profiles/architecture.png" width="800" height="600"/> 
+
+## 설계의도
+
+CQRS(Command Query Responsibility Segregation)
+- 데이터의 명령(Command)과 조회(Query)를 분리하는 아키텍처 패턴
+- 명령 작업과 조회 작업을 독립적으로 최적화 가능
+
+Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave DB에서 조회
+
+
 <br/>
 <br/>
 <br/>
@@ -109,22 +117,6 @@
 <br/>
 <br/>
 
-# 테스트 명세서
-<details>
-<summary> <b> 테스트 명세서 </b> </summary>
-<div markdown="1">
-
-![테스트 명세서](https://cdn.discordapp.com/attachments/1323349820890419314/1323351683119579308/--0.jpg?ex=677432cb&is=6772e14b&hm=b3d441dc44275a67b76f0448d41edccfc082bbb861373e0087c1e5d386b95f7c&)
-![테스트 명세서2](https://cdn.discordapp.com/attachments/1323349820890419314/1323351682423455774/--1.jpg?ex=677432cb&is=6772e14b&hm=4026f6c8844cf4b6dfb61663539502da15fde14f68b379ad23c533173c40e37e&)
-
-
-</div>
-</details>
-
-<br/>
-<br/>
-<br/>
-
 # 프로시저 명세서
 
 <details>
@@ -133,6 +125,22 @@
 
 ![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138528587886/page-0001.jpg?ex=67743338&is=6772e1b8&hm=15cc04669d20fd5c7737d7795f4be512caff3e3923d304cddadb4751a467e34c&)
 ![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138209951856/page-0003.jpg?ex=67743338&is=6772e1b8&hm=8cf09b814c8873039179d93a676e46b9d4aa2fc1dde1afe78278c3c744e89787&)
+
+</div>
+</details>
+
+<br/>
+<br/>
+<br/>
+
+# 테스트 명세서
+<details>
+<summary> <b> 테스트 명세서 </b> </summary>
+<div markdown="1">
+
+![테스트 명세서](https://cdn.discordapp.com/attachments/1323349820890419314/1323351683119579308/--0.jpg?ex=677432cb&is=6772e14b&hm=b3d441dc44275a67b76f0448d41edccfc082bbb861373e0087c1e5d386b95f7c&)
+![테스트 명세서2](https://cdn.discordapp.com/attachments/1323349820890419314/1323351682423455774/--1.jpg?ex=677432cb&is=6772e14b&hm=4026f6c8844cf4b6dfb61663539502da15fde14f68b379ad23c533173c40e37e&)
+
 
 </div>
 </details>
