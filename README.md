@@ -165,16 +165,123 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <div markdown="1">
 
 - 회원가입
-  
+```
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE insertUser(
+    IN _userId VARCHAR(15),
+       `_name` VARCHAR(15),
+       _email VARCHAR(40),
+       _passwd VARCHAR(40),
+       _nickname VARCHAR(15),
+       _phoneNum VARCHAR(15),
+       _birthAt DATE,
+       _national VARCHAR(15)
+       )
+BEGIN
+    -- 회원 아이디 중복 방지 조건문
+    DECLARE _cnt INT;
+	SET _cnt = (SELECT COUNT(*) 
+                FROM user 
+                WHERE userId = _userId
+                   OR email = _email
+                   OR phoneNum = _phoneNum
+                );
+
+    IF (
+        _cnt < 1 
+    )THEN
+            INSERT INTO user (
+                userId,
+                `name`,
+                email,
+                passwd,
+                nickName,
+                phoneNum,
+                birthAt,
+                national,
+                updatedAt
+                )
+            VALUES (
+                _userId,
+                `_name`,
+                _email,
+                _passwd,
+                _nickname,
+                _phoneNum,
+                _birthAt,
+                _national,
+                NULL
+                )
+            ;
+    ELSE
+        SELECT '이미 존재하는 회원 정보입니다.';
+            
+    END IF;
+
+END $$
+DELIMITER ;
+```
 <img src="profiles/insertUser_result.png"/>
 
 - 로그인
-  
+```
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE loginByUserId_passwd(
+    IN _userId VARCHAR(15),
+       _passwd VARCHAR(40)
+    )
+BEGIN
+
+	DECLARE _cnt INT;
+	SET _cnt = (SELECT COUNT(*) 
+                FROM user 
+                WHERE userId = _userId
+      				AND passwd = _passwd
+                );
+
+    IF (
+        _cnt >= 1 
+    )
+    THEN
+    	SELECT '로그인 성공';
+    ELSE 
+   	    SELECT '로그인 실패';
+    END IF;
+END $$
+DELIMITER ;
+```
 <img src="profiles/loginSuccess_result.png"/>
 <img src="profiles/loginFail_result.png"/>
 
 - 개인정보 수정
+```
+DELIMITER $$
+CREATE OR REPLACE PROCEDURE updateOneUser_passwdByUserId(
+    IN _userId VARCHAR(15),
+       _passwd VARCHAR(40),
+       _updatePasswd VARCHAR(40)
+    )
+BEGIN
+    DECLARE _cnt INT;
+	SET _cnt = (SELECT COUNT(*) 
+                FROM user 
+                WHERE userId = _userId
+                  AND passwd = _passwd);
 
+    IF (
+        _cnt >= 1 
+    )THEN
+        UPDATE user 
+        SET passwd = _updatePasswd
+        WHERE (userId = _userId
+          AND passwd = _passwd);
+    ELSE
+        SELECT '아이디 또는 비밀번호를 확인해주세요' AS '인증 오류';
+    END IF;
+
+END $$
+DELIMITER ;
+```
 <img src="profiles/updateOneUser_result.png"/>
 
 
