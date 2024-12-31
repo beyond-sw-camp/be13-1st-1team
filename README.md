@@ -20,7 +20,7 @@
 <br/>
 
 
-# 📣프로젝트 소개
+# 📣 프로젝트 소개
 지금 이 순간에도 한류는 퍼져나가 K-POP, K-FOOD 열풍이 끊이지 않고 있습니다. 이에 발맞추어 대한민국을 찾는 외국인들도 점점 증가하는 추세입니다. 
 
 현재 여러 여행 상품 플랫폼들이 존재하지만 국내 관광과 좀 더 밀접한 플랫폼을 만드는 것이 주 목적입니다.
@@ -67,7 +67,7 @@
 <br/>
 
 
-# 🍔 아키텍처
+# ☀️ 아키텍처
 <img src="profiles/architecture.png" width="800" height="600"/> 
 
 ## 설계의도
@@ -83,7 +83,7 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 <br/>
 
-# 요구사항 명세서
+# 📋 요구사항 명세서
 <details>
 <summary> <b> 요구사항 명세서 </b> </summary>
 <div markdown="1">
@@ -100,24 +100,48 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 <br/>
 
-# ERD 다이어그램
+# 📌 ERD 다이어그램
 ![erdCloud](https://cdn.discordapp.com/attachments/1323349820890419314/1323350575181598740/kppong.png?ex=677431c3&is=6772e043&hm=b0eddd83cac1a273940bff1b153c8160b8dd7ad36b34415265c76591101f9b3a&)
 
 <br/>
 <br/>
 <br/>
 
-# 테이블 명세서
-
+# 📑 테이블 명세서
+[테이블 명세서](https://docs.google.com/spreadsheets/d/1NONU6XjPpvL1pyhDL7qoTbkmLXL2w381Yy1f9geL-EA/edit?gid=0#gid=0)
+### 주요 테이블
 <details>
-<summary> <b> 테이블 명세서 </b> </summary>
+<summary> <b> 주문 테이블 </b> </summary>
 <div markdown="1">
 
-![테이블 명세서 1](https://cdn.discordapp.com/attachments/1323349820890419314/1323351149088346253/page-0001.jpg?ex=6774324c&is=6772e0cc&hm=85da5b700383b06c6f9864e2412af6f520891deac4a35347a110739b6b4b8810&)
-![테이블 명세서 2](https://cdn.discordapp.com/attachments/1323349820890419314/1323351149625212928/page-0002.jpg?ex=6774324c&is=6772e0cc&hm=83ab84783c813b837044b346e34ed9f18cce717a0514132045e60f578c38e8fc&)
-![테이블 명세서 3](https://cdn.discordapp.com/attachments/1323349820890419314/1323351148794478602/page-0003.jpg?ex=6774324c&is=6772e0cc&hm=4ee9c140f6ffca2755f0f771ccf7b21c73280c378cc147e50243a7aaf50f6c72&)
+![주문 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/ORDER.png)
+->  주문 상태 속성에 대한 주요 기능
 
+* 주문자 진행 상태인 주문을 취소할 수 있다
+* 주문자가 확정, 취소 상태인 주문을 취소할 수 없다
+* 주문자가 진행 상태인 주문을 결제하면 확정한다
+* 주문자가 확정, 취소 상태인 주문을 확정할 수 없다
+</div>
+</details>
 
+<details>
+<summary> <b> 유저 테이블 </b> </summary>
+<div markdown="1">
+	
+![유저 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/USER.png)
+-> 신고 기능 활용을 위한 신고 아이디 속성 포함
+
+</div>
+</details>
+
+<details>
+<summary> <b> 신고 테이블 </b> </summary>
+<div markdown="1">
+	
+![신고 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/%EC%8B%A0%EA%B3%A0.png)
+-> 주요 기능
+* 사용자나 패키지를 신고할 수 있게 합니다
+* 신고 테이블에 데이터가 쌓여 3번 이상이 되는 회원이 발생하면 그 회원은 시스템의 접속이 불가능합니다
 </div>
 </details>
 
@@ -125,7 +149,7 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 <br/>
 
-# 프로시저 명세서
+# ✂️ 프로시저 명세서
 
 <details>
 <summary> <b> 프로시저 명세서 </b> </summary>
@@ -141,7 +165,7 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 <br/>
 
-# 테스트 명세서
+# 💻 테스트 명세서
 <details>
 <summary> <b> 테스트 명세서 </b> </summary>
 <div markdown="1">
@@ -158,7 +182,7 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 
 
-# SQL
+# ✏️ SQL
 
 <details>
 <summary> <b> user </b> </summary>
