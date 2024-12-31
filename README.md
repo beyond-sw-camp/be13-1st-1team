@@ -164,6 +164,18 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <summary> <b> user </b> </summary>
 <div markdown="1">
 
+- 회원가입
+  
+![회원가입](<img src="profiles/insertUser_result.png"/>)
+
+- 로그인
+  
+![로그인 성공](<img src="profiles/loginSuccess_result.png"/>)
+![로그인 실패](<img src="profiles/loginFail_result.png"/>)
+
+- 개인정보 수정
+
+![개인정보 수정](<img src="profiles/updateOneUser_result.png"/>)
 
 
 </div>
