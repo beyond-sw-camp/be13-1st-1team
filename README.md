@@ -156,3 +156,38 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 <br/>
 <br/>
 <br/>
+
+
+# SQL
+
+<details>
+<summary> <b> order </b> </summary>
+<div markdown="1">
+
+- 등록
+  
+![등록](https://cdn.discordapp.com/attachments/1318411133933060198/1323466882803695657/a7f921b98fa5c7ca.png?ex=67749e15&is=67734c95&hm=74eb74be48d850c41fbcba248608697fe99d32915942c291133f703b29816d05&)
+
+- 조회
+  
+![조회](https://cdn.discordapp.com/attachments/1318411133933060198/1323466883181187093/804a6277e97536aa.png?ex=67749e15&is=67734c95&hm=f53e06ff1c3e634821056eea9402136b4d4e039e232e42138df486ab2fb01131&)
+
+- 결과값
+
+![결과](https://cdn.discordapp.com/attachments/1318411133933060198/1323466882451505242/a097c5f83aa56bc3.png?ex=67749e15&is=67734c95&hm=071b92118d011b51a158b327f7bdc65b552c8a6c6788358f73099344fe3f6993&)
+
+- 에러(진행중인 패기지가 아니면 발생)
+  
+![에러](https://cdn.discordapp.com/attachments/1318411133933060198/1323466906069635163/c0ac644b0baebeb0.png?ex=67749e1b&is=67734c9b&hm=134ff5eed7fe9db73e2076ee4b9735fd02f4956f1803253695eb0ce32c87eb73&)
+
+
+</div>
+</details>
+
+
+
+
+<br/>
+<br/>
+<br/>
+
