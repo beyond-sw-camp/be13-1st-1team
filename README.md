@@ -119,10 +119,10 @@ Master - Slave Replication
 ![주문 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/ORDER.png)
 ->  주문 상태 속성에 대한 주요 기능
 
-* 주문자 진행 상태인 주문을 취소할 수 있다
-* 주문자가 확정, 취소 상태인 주문을 취소할 수 없다
-* 주문자가 진행 상태인 주문을 결제하면 확정한다
-* 주문자가 확정, 취소 상태인 주문을 확정할 수 없다
+* 주문자 진행 상태인 주문을 취소할 수 있습니다
+* 주문자가 확정, 취소 상태인 주문을 취소할 수 없습니다
+* 주문자가 진행 상태인 주문을 결제하면 확정합니다
+* 주문자가 확정, 취소 상태인 주문을 확정할 수 없습니다
 </div>
 </details>
 
@@ -131,8 +131,9 @@ Master - Slave Replication
 <div markdown="1">
 	
 ![유저 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/USER.png)
--> 신고 기능 활용을 위한 신고 아이디 속성 포함
-
+-> 주요 기능
+* 신고 기능 활용을 위한 신고 아이디 속성 포함합니다
+* 제적 여부 속성을 통해 이후에도 서비스에 가입 불가합니다
 </div>
 </details>
 
@@ -143,9 +144,22 @@ Master - Slave Replication
 ![신고 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/%EC%8B%A0%EA%B3%A0.png)
 -> 주요 기능
 * 사용자나 패키지를 신고할 수 있게 합니다
-* 신고 테이블에 데이터가 쌓여 3번 이상이 되는 회원이 발생하면 그 회원은 시스템의 접속이 불가능합니다
+* 신고 테이블에 데이터가 들어오면 사용자 경고를 받게 됩니다
+  
 </div>
 </details>
+
+<details>
+<summary> <b> 사용자 경고 테이블 </b> </summary>
+<div markdown="1">
+	
+![사용자 경고 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/%EC%82%AC%EC%9A%A9%EC%9E%90%20%EA%B2%BD%EA%B3%A0.png)
+-> 주요 기능
+* 사용자의 데이터가 쌓여 3번 이상이 되는 회원이 발생하면 그 회원은 시스템의 접속이 불가능합니다
+ 
+</div>
+</details>
+
 
 <br/>
 <br/>
@@ -157,9 +171,8 @@ Master - Slave Replication
 <summary> <b> 프로시저 명세서 </b> </summary>
 <div markdown="1">
 
-<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0001.jpg"/>
-<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0002.jpg"/>
-<img src="profiles/크뽕 종합 - 프로시저 명세서_page-0003.jpg"/>
+![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138528587886/page-0001.jpg?ex=67743338&is=6772e1b8&hm=15cc04669d20fd5c7737d7795f4be512caff3e3923d304cddadb4751a467e34c&)
+![프로시저 명세서1](https://cdn.discordapp.com/attachments/1323349820890419314/1323352138209951856/page-0003.jpg?ex=67743338&is=6772e1b8&hm=8cf09b814c8873039179d93a676e46b9d4aa2fc1dde1afe78278c3c744e89787&)
 
 </div>
 </details>
