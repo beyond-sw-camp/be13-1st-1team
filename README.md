@@ -1,14 +1,19 @@
 # Kppong
-
+<img src="profiles/logo.png" width="300" height="300"/>
 <br/>
 <br/>
 <br/>
 
 # 🫡팀원소개
-### 🧑‍💻김범석 [ @g00dbyul ](https://github.com/g00dbyul)
+<!-- ### 🧑‍💻김범석 [ @g00dbyul ](https://github.com/g00dbyul)
 ### 🧑‍💻송현준 [ @Hyeonjunnn ](https://github.com/Hyeonjunnn)
 ### 👩‍💻이제경 [ @jelee55 ](https://github.com/jelee55)  
-### 🧑‍💻이창신 [ @always0702 ](https://github.com/always0702)
+### 🧑‍💻이창신 [ @always0702 ](https://github.com/always0702) -->
+
+|<img src="profiles/mymelody.jpg" width="200" height="200"/> | <img src="profiles/mycall.png" width="200" height="200"/> |<img src="profiles/zzangu.png" width="200" height="200"/>|<img src="profiles/ddunge.png" width="200" height="200"/>|
+| :------------------------------------------------------------: | :------------------------------------------------------------: |:------------------------------------------------------------: |:------------------------------------------------------------: |
+|🧑‍💻김범석 [ @g00dbyul ](https://github.com/g00dbyul)|🧑‍💻송현준 [ @Hyeonjunnn ](https://github.com/Hyeonjunnn)|👩‍💻이제경 [ @jelee55 ](https://github.com/jelee55)|🧑‍💻이창신 [ @always0702 ](https://github.com/always0702)
+
 
 <br/>
 <br/>
@@ -37,9 +42,27 @@
 <br/>
 <br/>
 
-# 기술스택
+# 🍔 기술스택
 
 
+![Ubuntu](https://img.shields.io/badge/ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=FFFFFF)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)
+
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=Prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/grafana-%23F46800.svg?style=for-the-badge&logo=grafana&logoColor=white)
+
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Discord](https://img.shields.io/badge/Discord-5865F2.svg?style=for-the-badge&logo=discord&logoColor=white)
+
+<br/>
+<br/>
+<br/>
+
+
+# 🍔 아키텍처
+<img src="profiles/architecture.png" width="800" height="600"/> 
 <br/>
 <br/>
 <br/>
