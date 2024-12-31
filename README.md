@@ -42,6 +42,9 @@
 <br/>
 <br/>
 
+# 📄 WBS
+![WBS](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/WBS.png)
+
 # 🍔 기술스택
 
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
