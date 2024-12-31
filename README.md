@@ -132,7 +132,7 @@ Master - Slave Replication
 	
 ![유저 테이블](https://github.com/beyond-sw-camp/be13-1st-201Successful-Kppong/blob/main/TB%20PNG/USER.png)
 -> 주요 기능
-* 신고 기능 활용을 위한 신고 아이디 속성 포함합니다
+* 신고 기능 활용을 위한 신고 아이디 속성을을 포함합니다
 * 제적 여부 속성을 통해 이후에도 서비스에 가입 불가합니다
 </div>
 </details>
