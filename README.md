@@ -161,6 +161,34 @@ Proxysql을 통해 명령 작업은 Mater DB에 적용, 조회 작업은 Slave D
 # SQL
 
 <details>
+<summary> <b> user </b> </summary>
+<div markdown="1">
+
+
+
+</div>
+</details>
+
+<details>
+<summary> <b> package </b> </summary>
+<div markdown="1">
+
+- 패키지 등록
+  
+![패키지 등록](https://cdn.discordapp.com/attachments/1318411133933060198/1323466906409238569/54127955c02bf0b4.png?ex=67749e1b&is=67734c9b&hm=9e97e5f80f2225e205c34998a5f1a010b8c010eab6d89976ae92b1ad4e2b5dcb&)
+
+- 조회
+
+![](https://cdn.discordapp.com/attachments/1318411133933060198/1323466906887258182/66ec93d136cf09c6.png?ex=67749e1b&is=67734c9b&hm=ab73075825f69221a1f88aa3e21ba5df12f47c39e550eaf0c72cb919daa36fec&)
+
+
+- 결과값
+
+![결과값](https://cdn.discordapp.com/attachments/1318411133933060198/1323468186149978214/image.png?ex=67749f4c&is=67734dcc&hm=48515012d49721051145ce218097793296ac08cfb6a076f104b9e6e15534f24f&)
+</div>
+</details>
+
+<details>
 <summary> <b> order </b> </summary>
 <div markdown="1">
 
